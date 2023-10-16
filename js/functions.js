@@ -11,6 +11,7 @@
 function sayHello(name) {
     return `Hello ${name}!`;
 }
+//function sayHello(name) => 'Hello, ${name}!`
 
 /**
  * TODO:
@@ -58,8 +59,11 @@ function isTwo(x) {
 }
 console.log(isTwo(random));
 
-/**
- * TODO:
+/*function isTwo(x) => x===2;
+*console.log(`It is ${isTwo(random)} that ${random} is equal to 2.`);
+/*Should say true or false depending on the random
+
+ /* TODO:
  * Create a function named 'calculateTip' to calculate a tip on a bill at a
  * restaurant. The function should accept a tip percentage and the total of the
  * bill, and return the amount to tip
