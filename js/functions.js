@@ -11,7 +11,7 @@
 function sayHello(name) {
     return `Hello ${name}!`;
 }
-//function sayHello(name) => 'Hello, ${name}!`
+//function sayHello(name) => `Hello, ${name}!`
 
 /**
  * TODO:
@@ -20,8 +20,8 @@ function sayHello(name) {
  *
  * console.log 'helloMessage' to check your work
  */
-let Name = `Chan`;
-let helloMessage = sayHello(Name);
+
+let helloMessage = sayHello('Chan');
 console.log(helloMessage);
 
 /**
@@ -86,7 +86,7 @@ console.log(calculateTip(.15,100));
  */
 let totalBill = parseFloat(prompt("How much is your total bill?"));
 let tip = parseFloat(prompt("Enter, in decimal format, the percentage you would like to tip"));
-let tipAmount = totalBill * tip;
+let tipAmount = calculateTip(tip,totalBill);
 alert(`Your calculated tip is $${tipAmount.toFixed(2)}`);
 
 /**
@@ -107,3 +107,4 @@ function applyDiscount (a, b) {
     return (a - (a * b));
 }
 console.log(applyDiscount(45.99, 0.12));
+//for working with teams, variables should be specific to avoid confusion
