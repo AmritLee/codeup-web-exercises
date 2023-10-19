@@ -184,9 +184,6 @@ if (!enterNum) {
     alert(`Your entered number plus 100 is equal to ` + (numPrompt + 100))
     if (numPrompt > 0) {
         alert(`Your number is positive`)
-    } else {
+    } else
         alert(`Your number is negative.`)
-}}
-
-
-
+}
