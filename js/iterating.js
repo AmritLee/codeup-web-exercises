@@ -37,7 +37,7 @@ console.log(names[3]);
      * TODO:
      * Refactor your above code to use a `forEach` loop
      */
-    names.forEach(function (name) {
+    names.forEach(name => {
         console.log(name);
     });
 
