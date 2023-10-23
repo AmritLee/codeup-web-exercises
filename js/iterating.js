@@ -41,6 +41,7 @@ console.log(names[3]);
         console.log(name);
     });
 
+
     /**
      * TODO:
      * Create the following three functions, each will accept an array and
@@ -54,10 +55,18 @@ console.log(names[3]);
      *  > second([1, 2, 3, 4, 5]) // returns 2
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
-const returnFirst = (array) => array[0];
+    function returnFirst(arr) {
+        return arr[0];
+    }
+    function returnSecond(arr) {
+        let result = arr[1];
+        return result;
+    }
+
+    function returnLast(arr) {
+        return arr[arr.length -1];
+    }
     console.log(returnFirst([1,2,3,4,5]));
-const returnSecond = (array) => array[1];
     console.log(returnSecond([1,2,3,4,5]));
-const returnLast = (array) => array[array.length - 1];
     console.log(returnLast([1,2,3,4,5]));
 })();
