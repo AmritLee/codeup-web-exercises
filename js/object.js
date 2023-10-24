@@ -13,7 +13,7 @@
      */
     let person = {
         firstName: "Chan",
-        lastName:"Lee",
+        lastName:"Lee"
     };
     console.log(person.firstName)
     console.log(person.lastName)
@@ -26,8 +26,11 @@
      * Example
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
-    person.sayHello = `Hello from ${person.firstName} ${person.lastName}!`;
-    console.log(person.sayHello);
+
+    person.sayHello = function () {
+        return `Hello from ${this.firstName} ${this.lastName}!`;
+    }
+    console.log(person.sayHello());
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -49,15 +52,23 @@
         {name: 'George', amount: 320}
     ];
 
-    shoppers.forEach(function (shoppers) {
-        let discount;
-        if (shoppers.amount > 200) {
-            discount = 0.12
-        } else discount = 0;
-        let totalAmt = shoppers.amount - (shoppers.amount * discount);
-        console.log(`${shoppers.name}'s total before discount: $${shoppers.amount}.Your discount is ${discount * 100}%.\n
-        Your final bill is $${totalAmt.toFixed(2)}.`);
-    });
+    for(let shopper of shoppers) {
+        if (shopper.amount > 200) {
+            console.log(`Congratulations, ${shopper.name}. Your total:$${(shopper.amount).toFixed(2)} qualifies for a 12% discount. 
+            Your new bill is $${(shopper.amount * .88).toFixed(2)}!`);
+        } else {
+            console.log(`Sorry, ${shopper.name}. Your total:$${(shopper.amount).toFixed(2)} does not qualify for discount.`)
+        }
+    }
+    // shoppers.forEach(function (shoppers) {
+    //     let discount;
+    //     if (shoppers.amount > 200) {
+    //         discount = 0.12
+    //     } else discount = 0;
+    //     let totalAmt = shoppers.amount - (shoppers.amount * discount);
+    //     console.log(`${shoppers.name}'s total before discount: $${shoppers.amount}.Your discount is ${discount * 100}%.\n
+    //     Your final bill is $${totalAmt.toFixed(2)}.`);
+    // });
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
@@ -173,9 +184,11 @@
     ]
     console.log(bookList);
 
+    function showBookInfo (book) {
+        return `Title: ${book.title}\n${book.author.firstName} ${book.author.lastName}`
+    }
     bookList.forEach(function (book, index) {
-        console.log(`Title: ${bookList[index].title}`);
-        console.log(`Author: ${bookList[index].author.firstName} ${bookList[index].author.lastName}`);
+        console.log(`Book #${index + 1}\n${showBookInfo(book)}`);
     });
 
 })();
