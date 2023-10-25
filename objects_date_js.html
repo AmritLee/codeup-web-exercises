@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Objects</title>
+</head>
+<body>
+    <script>
+    'use strict';
+
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    let jsBirthday =new Date(1991, 4, 6, 0, 0, 0)
+    console.log(jsBirthday.toString());
+
+    function birthdayFormat() {
+        let monthName = months[jsBirthday.getMonth()];
+        let day = jsBirthday.getDate();
+        let year = jsBirthday.getFullYear();
+        return `${monthName} ${day}, ${year}`;}
+
+    console.log('Here is my birthday using JavaScript: ' + birthdayFormat());
+    //birthdayFormat = ${} ${months[jsBirthday.getMonth()]} ${jsBirthday.getDate()}, ${jsBirthday.getYear()}
+    </script>
+</body>
+</html>
