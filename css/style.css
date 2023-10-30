@@ -1,4 +1,107 @@
-h1 {
-    color: purple;
-    text-decoration: ;
+.main-heading {
+    margin: 0 auto;
+    text-align: center;
+    color: darkorange;
+}
+
+.secondary-heading {
+    margin: 0 auto;
+    text-align: center;
+    color: darkorange;
+    text-decoration: underline;
+}
+/*hindsight 20/20 name this center instead of paragraph*/
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+}
+
+body {
+    background-color: blanchedalmond;
+    min-height: 100vh;
+}
+
+/* unordered list*/
+.centered-list-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the list */
+}
+
+/* Style for the horizontal list */
+ul.horizontal-list {
+    list-style-type: circle;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Style for list items in the horizontal list */
+ul.horizontal-list li {
+    margin-right: 20px;
+}
+
+/*applies to all ol*/
+ol {
+    list-style-type: decimal;
+    text-align: center;
+    list-style-position: inside;
+    display: flex;
+    justify-content: center;
+}
+
+ol li {
+    margin: 0 10px; /* Add space between list style type and text (adjust as needed) */
+}
+
+body {
+    background-image: url("https://cdn.pixabay.com/photo/2015/03/30/12/37/jellyfish-698521_1280.jpg");
+    background-size: cover;
+    font-family: "Sofia", sans-serif;
+}
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Style for the table */
+.bottomTable {
+    border-collapse: collapse; /* Optional: Combines cell borders for a cleaner look */
+    width: 100%; /* Adjust the width as needed */
+    font-size: 16px; /* Set the font size for the table */
+
+    /* Style for table cells (<td>) */
+
+    & td {
+        padding: 10px; /* Set the padding for table cells */
+        font-size: 14px; /* Set the font size for table cells */
+        border: 1px solid #000; /* Optional: Add cell borders */
+    }
+
+    /* Style for table rows (<tr>) */
+
+    & tr {
+        background-color: #f2f2f2; /* Optional: Alternate row background color */
+    }
+
+    /* Apply specific styles to the first row (header) */
+
+    & tr:first-child {
+        font-weight: bold; /* Make the first row bold */
+        background-color: #333; /* Optional: Header background color */
+        color: #fff; /* Optional: Header text color */
+    }
+}
+
+a {
+    color: blue;
+}
+
+a:visited {
+    color: orangered;
+}
+
+a:hover {
+    color: blueviolet;
 }
