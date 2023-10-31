@@ -33,3 +33,14 @@ body, html {
     background-color: #FFC2C2;
     color: #830000;
 }
+
+/*:root {*/
+/*    --bg-error: #FFC2C2;*/
+/*    --font-error:#830000;*/
+/*    etc*/
+/*}*/
+
+/*.message-error{*/
+/*    background: var(--bg-error);*/
+/*    color: var(--font-error);*/
+/*}*/
