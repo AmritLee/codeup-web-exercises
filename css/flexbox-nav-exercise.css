@@ -40,6 +40,11 @@ li {
     padding: 10px 20px;
 }
 
+.nav-bar-left li a{
+    text-decoration: none ;
+    color: black;
+}
+
 .nav-bar-logo li a {
     font-size: 3em;
     padding: 0.2em 0;
@@ -54,6 +59,12 @@ li {
     display: inline-block;
     padding: 10px 20px;
 }
+
+.nav-bar-right li a {
+    text-decoration: none ;
+    color: black;
+}
+
 nav a:hover {
     color: blue;
 }
