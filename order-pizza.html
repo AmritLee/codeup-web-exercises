@@ -70,25 +70,25 @@
                         <div class="card d-inline-block p-4 border-bottom-0">
                             <div class="border border-light border-4">
                             <div class="card-header">
-                                Featured
+                                Hand tossed
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <label class="form-check">
-                                        <input type="radio" class="form-check-input" name="group1" value="item1">
-                                        An item
-                                    </label>
+<!--                                    <label class="form-check">-->
+<!--                                        <input type="radio" class="form-check-input" name="group1" value="item1">-->
+                                        Garlic seasoned crust with a rich, buttery taste.
+<!--                                    </label>-->
                                 </li>
                                 <li class="list-group-item">
                                     <label class="form-check">
-                                    <input type="radio" class="form-check-input" name="group1" value="item2">
-                                    A second item
+                                        <input type="radio" class="form-check-input" name="group1" value="item2">
+                                        Small ("10")
                                     </label>
                                 </li>
                                 <li class="list-group-item">
                                     <label class="form-check">
                                         <input type="radio" class="form-check-input" name="group1" value="item2">
-                                        A second item
+                                        Medium ("12")
                                     </label>
                                 </li>
                             </ul>
@@ -97,65 +97,136 @@
                     <div class="card d-inline-block p-4 border-top-0">
                         <div class="border border-light border-4">
                             <div class="card-header">
-                                Featured
+                                Crispy thin
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
+<!--                                    <label class="form-check">-->
+<!--                                        <input type="radio" class="form-check-input" name="group2" value="item1">-->
+                                        Thin enough for optimal crispy to crunchy ratio
+<!--                                    </label>-->
+                                </li>
+                                <li class="list-group-item">
                                     <label class="form-check">
-                                        <input type="radio" class="form-check-input" name="group2" value="item1">
-                                        An item
+                                        <input type="radio" class="form-check-input" name="group2" value="item2">
+                                        Medium ("12")
                                     </label>
                                 </li>
                                 <li class="list-group-item">
                                     <label class="form-check">
                                         <input type="radio" class="form-check-input" name="group2" value="item2">
-                                        A second item
-                                    </label>
-                                </li>
-                                <li class="list-group-item">
-                                    <label class="form-check">
-                                        <input type="radio" class="form-check-input" name="group2" value="item2">
-                                        A second item
+                                        Large ("14")
                                     </label>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="card-footer text-muted text-end">
-                    <a href="#" class="btn btn-primary">Next Step</a>
+                <div class="card-footer text-end">
+                    <a class="btn btn-primary" href="#" data-bs-toggle="tab">Next<i class="bi bi-arrow-bar-right"></i></a>
                 </div>
             </div>
 <!--Start Second tab-->
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+            <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="card">
+                        <div class="card-body row g-0 text-light bg-primary">
+                            Choose Cheese and Sauce
+                        </div>
+                        <div class="card d-inline-block p-4 border-bottom-0">
+                            <div class="border border-light border-4">
+                                <div class="card-header">
+                                    Cheese
+                                </div>
+                                <div class="card-body border-bottom">
+                                    How much?
+                                </div>
+                                <div class="input-group p-3">
+                                    <select class="form-select" id="inputGroupSelect01">
+                                        <option selected>Choose...</option>
+                                        <option value="1">Light</option>
+                                        <option value="2">Regular</option>
+                                        <option value="3">Extra</option>
+                                    </select>
+                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card d-inline-block p-4 border-top-0">
+                            <div class="border border-light border-4">
+                                <div class="card-header">
+                                    Sauce
+                                </div>
+                                <div class="card-body border-bottom">
+                                    What type?
+                                </div>
+                                    <div class="input-group p-3 border-bottom">
+                                        <select class="form-select" id="inputGroupSelect02">
+                                            <option selected>Choose...</option>
+                                            <option value="1">Marinara</option>
+                                            <option value="2">Creamy Garlic Parmesan</option>
+                                            <option value="3">Barbeque</option>
+                                        </select>
+                                        <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                                </div>
+<!--                                <div class="card-body border-bottom">-->
+<!--                                    Amount-->
+<!--                                </div>-->
+                                <div class="btn-group p-3" role="group" aria-label="Basic radio toggle button group">
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio0" autocomplete="off" checked disabled>
+                                    <label class="btn btn-outline-dark" for="btnradio0" disabled>Amount</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary" for="btnradio1">Light</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio2">Regular</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio3">Extra</label>
+                            </div>
+                            </div>
+                            <div class="card-footer text-end">
+                                <a class="btn btn-primary" href="#" data-bs-toggle="tab"><i class="bi bi-arrow-bar-left"></i>Previous</a>
+                                <a class="btn btn-primary" href="#" data-bs-toggle="tab">Next<i class="bi bi-arrow-bar-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
 <!--Start Third tab            -->
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                 <div class="card">
                     <div class="card-body row g-0 text-light bg-primary">
-                        Choose Size and Chart
+                        Choose Toppings
                     </div>
                     <div class="card d-inline-block p-4 border-bottom-0">
                         <div class="border border-light border-4">
                             <div class="card-header">
-                                Featured
+                                Choose Meats
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <label class="form-check">
-                                        <input type="radio" class="form-check-input" name="group1" value="item1">
-                                        An item
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        Beef
                                     </label>
                                 </li>
                                 <li class="list-group-item">
-                                    <label class="form-check">
-                                        <input type="radio" class="form-check-input" name="group1" value="item2">
-                                        A second item
+                                    <label class="form-check-label" for="flexCheckDefault1">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                                        Ham
                                     </label>
                                 </li>
                                 <li class="list-group-item">
-                                    <label class="form-check">
-                                        <input type="radio" class="form-check-input" name="group1" value="item2">
-                                        A second item
+                                    <label class="form-check-label" for="flexCheckDefault2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                                        Philly steak
+                                    </label>
+                                </li>
+                                <li class="list-group-item">
+                                    <label class="form-check-label" for="flexCheckDefault3">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                                        Bacon
                                     </label>
                                 </li>
                             </ul>
@@ -164,35 +235,41 @@
                     <div class="card d-inline-block p-4 border-top-0">
                         <div class="border border-light border-4">
                             <div class="card-header">
-                                Featured
+                                Choose Non-Meats
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <label class="form-check">
-                                        <input type="radio" class="form-check-input" name="group2" value="item1">
-                                        An item
+                                    <label class="form-check-label" for="flexCheckDefault4">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                                        Green Peppers
                                     </label>
                                 </li>
                                 <li class="list-group-item">
-                                    <label class="form-check">
-                                        <input type="radio" class="form-check-input" name="group2" value="item2">
-                                        A second item
+                                    <label class="form-check-label" for="flexCheckDefault5">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5">
+                                        Mushrooms
                                     </label>
                                 </li>
                                 <li class="list-group-item">
-                                    <label class="form-check">
-                                        <input type="radio" class="form-check-input" name="group2" value="item2">
-                                        A second item
+                                    <label class="form-check-label" for="flexCheckDefault6">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6">
+                                        Onions
+                                    </label>
+                                </li>
+                                <li class="list-group-item">
+                                    <label class="form-check-label" for="flexCheckDefault7">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7">
+                                        Jalapeno Peppers
                                     </label>
                                 </li>
                             </ul>
                         </div>
+                        <div class="card-footer text-end">
+                            <a type="button" class="btn btn-primary"><i class="bi bi-arrow-bar-left"></i>Previous</a>
+                            <a type="button" class="btn btn-primary">Checkout <i class="bi bi-cart-fill"></i></a>
                     </div>
                 </div>
-                <div class="card-footer text-muted text-end">
-                    <a href="#" class="btn btn-primary">Next Step</a>
                 </div>
-            </div>
             </div>
         </div>
     </section>
