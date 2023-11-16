@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<body>
+<style>
+    h1 {
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+    img {
+        display: block;
+        margin: auto;
+    }
+</style>
+
+<audio id="cheatAudio">
+    <source src="audio/gameSound.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
+<div id="profile-card">
+    <img id="keyImage" src="images/konami.jpeg">
+    <h1>Konami Code</h1>
+    <p id="enteredKey">Entered Code </p>
+</div>
+
+<script>
+    "use strict";
+
+    const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13]; // Using keycodes
+    let codePosition = 0;
+
+    // Control image changes and handle Konami Code
+    document.addEventListener('keyup', (e) => {
+        let keyCode = e.keyCode;
+
+        // Handle Konami Code
+        let requiredKey = konamiCode[codePosition];
+        if (keyCode === requiredKey) {
+            codePosition++;
+            if (codePosition === konamiCode.length) {
+                activateCheats();
+                codePosition = 0;
+            }
+        } else {
+            codePosition = 0;
+        }
+        // image changes
+        changeImage(keyCode);
+    });
+
+    // function for image change
+    let image = document.getElementById("keyImage");
+    function changeImage(keyCode) {
+        switch (keyCode) {
+            case 38:
+                image.src = "images/upArrow.png";
+                break;
+            case 40:
+                image.src = "images/downArrow.png";
+                break;
+            case 37:
+                image.src = "images/leftArrow.png";
+                break;
+            case 39:
+                image.src = "images/rightArrow.png";
+                break;
+            case 66:
+                image.src = "images/bButton.png";
+                break;
+            case 65:
+                image.src = "images/aButton.png";
+                break;
+            default:
+                image.src = "images/konamiCode.jpeg";
+        }
+    }
+
+    function activateCheats() {
+        document.getElementById('enteredKey').textContent = 'Cheats activated';
+
+        document.body.style.backgroundColor = '#add8e6';
+
+        const audio = document.getElementById('cheatAudio');
+        audio.play();
+
+        alert('Cheats activated');
+    }
+</script>
+</body>
+</html>
+
