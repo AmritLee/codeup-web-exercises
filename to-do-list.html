@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #to-do-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #to-do-form label, #to-do-form input, #to-do-form button {
+            margin-bottom: 10px;
+        }
+
+        .card {
+            width: 300px;
+            background-color: #f0f0f0;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card p {
+            margin: 0;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .notification {
+            background-color: #ffc107;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>To-Do App</h3>
+
+<form id="to-do-form">
+    <label for="task">Task:</label>
+    <input type="text" id="task" required>
+    <button type="submit">Add Task</button>
+</form>
+
+<div id="to-do-list" class="to-do-list">
+    <!-- Existing tasks will go here -->
+</div>
+
+<div id="notification" class="notification" style="display: none;"></div>
+
+<script>
+    const toDoList = document.getElementById('to-do-list');
+    const notification = document.getElementById('notification');
+
+    document.getElementById('to-do-form').addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevents the form from submitting and refreshing the page
+
+        const taskInput = document.getElementById('task');
+        const taskText = taskInput.value;
+
+        if (taskText.trim() === '') {
+            // Notify the user if the to-do text is blank
+            showNotification('To-do text cannot be blank!');
+            return;
+        }
+
+        if (toDoList.children.length >= 10) {
+            // Notify the user if there are already 10 to-dos
+            showNotification('Maximum of 10 to-dos reached. Complete some before adding new ones.');
+            return;
+        }
+
+        // Create a new to-do item
+        const toDoItem = document.createElement('div');
+        toDoItem.className = 'card';
+        toDoItem.innerHTML = `
+                <p>${taskText}</p>
+                <button class="btn btn-danger">Done</button>
+            `;
+
+        // Add the new to-do item to the list
+        toDoList.appendChild(toDoItem);
+
+        // Clear the input field
+        taskInput.value = '';
+
+        // Add event listener to the 'Done' button of the new to-do item
+        const doneButton = toDoItem.querySelector('.btn-danger');
+        doneButton.addEventListener('click', function () {
+            // Remove the parent div element (the to-do item) when 'Done' is clicked
+            toDoList.removeChild(toDoItem);
+        });
+
+        // Hide any existing notifications
+        hideNotification();
+    });
+
+    function showNotification(message) {
+        notification.textContent = message;
+        notification.style.display = 'block';
+    }
+
+    function hideNotification() {
+        notification.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
