@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <h1>GitHub Last Commit Date</h1>
+
+    <form id="githubForm">
+        <label for="username">GitHub Username:</label>
+        <input type="text" id="username" required>
+        <button type="button" onclick="getLastCommit()">Get Last Commit Date</button>
+    </form>
+
+    <p id="result"></p>
+    <script src="js/fetch.js"></script>
+</body>
+</html>

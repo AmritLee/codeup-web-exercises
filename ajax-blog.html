@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/ajax-blog-style.css">
+
+</head>
+<body>
+<div id="posts">
+    <!-- This is where the blog posts will be dynamically loaded using Ajax -->
+</div>
+<script>
+    // Fetch data from blog.json
+    fetch('data/blog.json')
+        .then(response => response.json())
+        .then(data => {
+            // Handle the data and add it to the #posts div
+            const postsDiv = document.getElementById('posts');
+            data.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.innerHTML = `
+                    <h2>${post.title}</h2>
+                    <p>${post.content}</p>
+                    <hr>
+                `;
+                postsDiv.appendChild(postElement);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+</script>
+</body>
+</html>
