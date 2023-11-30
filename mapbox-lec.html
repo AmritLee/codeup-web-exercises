@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>First Mapbox Map</title>
+  <!-- Mapbox CSS -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+
+<h1>My First Mapbox Map!</h1>
+<!-- Mapbox JS -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+<!-- Custom JS -->
+<script src="js/keys.js"></script>
+
+<div id='map' style='width: 80vw; height: 50vh; margin: auto'></div>
+<script>
+  mapboxgl.accessToken = MB_key;
+  const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+    center: [-121.4944, 38.5816], // starting position [lng, lat]
+    zoom: 9, // starting zoom
+  });
+
+  map.addControl(new mapboxgl.NavigationControl())
+
+  const marker = new mapboxgl.Marker()
+          .setLngLat([-121.4944, 38.5816])
+          .addTo(map);
+</script>
+</body>
+</html>

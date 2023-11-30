@@ -45,6 +45,7 @@ function getLastCommitDate(username, token) {
 }
 
 const username = 'AmritLee';
+const token = GH_key;
 
 getLastCommitDate(username, token)
     .then((lastCommitDate) => console.log(`Last commit date: ${lastCommitDate}`))
