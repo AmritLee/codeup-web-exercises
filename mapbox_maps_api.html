@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>First Mapbox Map</title>
+  <!-- Mapbox CSS -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+<h1>My First Mapbox Map!</h1>
+<!-- Mapbox JS -->
+<script src="js/mapbox_geocoder_utils.js"></script><!-- Custom JS -->
+<script src="js/keys.js"></script>
+<div id='map' style='width: 80vw; height: 50vh; margin: auto'></div>
+<script>
+  mapboxgl.accessToken = MB_key;
+  const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+    center: [-121.3027, 38.5891], // starting position [lng, lat]
+    zoom: 8, // starting zoom
+  });
+
+  map.addControl(new mapboxgl.NavigationControl())
+
+  // Programmatically changing zoom level after the initial map is drawn
+  map.on('load', () => {
+    setTimeout(() => {
+      map.setZoom(10);
+    }, 2000); // Change zoom level to 15 after 2 seconds
+  });
+  geocode("3161 Zinfandel Dr Suite 4, Rancho Cordova, CA 95670", MB_key).then(coords => {
+    const marker = new mapboxgl.Marker()
+            .setLngLat(coords)
+            .addTo(map);
+
+    const codeupPopup = new mapboxgl.Popup()
+            .setHTML("<p>PokeCube</p>");
+
+    marker.setPopup(codeupPopup);
+  });
+
+  fetch('data/map.json')
+          .then(response => response.json())
+          .then(restaurants => {
+            // Iterate over the array using forEach and add markers for each restaurant
+            restaurants.forEach(restaurant => {
+              geocode(restaurant.address, MB_key).then(coords => {
+                const marker = new mapboxgl.Marker()
+                        .setLngLat(coords)
+                        .addTo(map);
+
+                const popup = new mapboxgl.Popup()
+                        .setHTML(`<p>${restaurant.name}<br>Type: ${restaurant.type.join(', ')}</p>`);
+                marker.setPopup(popup);
+              });
+            });
+          })
+</script>
+</body>
+</html>

@@ -17,7 +17,7 @@
 
 <div id='map' style='width: 80vw; height: 50vh; margin: auto'></div>
 <script>
-  mapboxgl.accessToken = MB_key;
+  // mapboxgl.accessToken = MB_key;
   const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v12', // style URL
@@ -27,9 +27,24 @@
 
   map.addControl(new mapboxgl.NavigationControl())
 
-  const marker = new mapboxgl.Marker()
-          .setLngLat([-121.4944, 38.5816])
-          .addTo(map);
+  geocode("3161 Zinfandel Dr Suite 4, Rancho Cordova, CA 95670", MB_KEY).then(coords => {
+    const marker = new mapboxgl.Marker()
+            .setLngLat(coords)
+            .addTo(map);
+
+    const codeupPopup = new mapboxgl.Popup()
+            .setHTML("<p>PokeCube</p>");
+
+    marker.setPopup(codeupPopup);
+  });
+
+  geocode("6309 Sunrise Blvd, Citrus Heights, CA 95610", MB_KEY).then(coords => {
+    console.log(coords);
+    let popup = new mapboxgl.Popup()
+            .setLngLat(coords)
+            .setHTML("<p>Codeup Rocks!</p>")
+            .addTo(map);
+  });
 </script>
 </body>
 </html>

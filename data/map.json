@@ -1,0 +1,26 @@
+[
+  {
+    "name": "PokeCube",
+    "address": "3161 Zinfandel Dr Suite 4, Rancho Cordova, CA 95670",
+    "type": [
+      "Hawaiian",
+      "Raw Fish"
+    ]
+  },
+  {
+    "name": "Texas RoadHouse",
+    "address": "6309 Sunrise Blvd, Citrus Heights, CA 95610",
+    "type": [
+      "American",
+      "Steaks"
+    ]
+  },
+  {
+    "name": "Aladdin's Grill",
+    "address": "2320 Sunrise Blvd, Rancho Cordova, CA 95670",
+    "type": [
+      "Mediterranean",
+      "Lamb"
+    ]
+  }
+]
