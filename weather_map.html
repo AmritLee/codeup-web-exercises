@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js'></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css' rel='stylesheet'/>
+    <link href="css/weather.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="navbar">
+    <div>
+        <span id="currentCityLabel">Current City:</span>
+        <span id="currentCity">Rancho Cordova</span>
+    </div>
+    <span id="current-time"></span>
+    <div id="search-container">
+        <label for="location-input">Enter Location: </label>
+        <input id="location-input" placeholder="Enter a location" type="text">
+        <button onclick="searchLocation()">Search</button>
+    </div>
+</div>
+<section id="weather-container" class="weather-box">
+    <div id="weather-info-box">
+        <p id="weather-info"></p>
+    </div>
+    <hr>
+    <div id="forecast-header">5-day Forecast</div>
+    <div id="forecast-container"></div>
+    <div id='map' style='width: 80vw; height: 50vh; margin: auto'></div>
+    <script src="js/keys.js"></script>
+    <script src="js/weather.js"></script>
+</section>
+</body>
+</html>

@@ -1,0 +1,69 @@
+body {
+    font-family: 'Hedvig Letters Serif', serif;
+    background-color: #1A4590;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2554A7;
+    color: #FFFFFF;
+    padding: 20px;
+    z-index: 1000; /* Ensure the navbar is above other elements */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Align items with space between them */
+}
+
+#search-container {
+    display: flex;
+    justify-content: flex-end; /* Position to the right */
+    align-items: center; /* Align items vertically */
+    margin-right: 30px; /* Add margin to separate input from the button */
+
+}
+
+#location-input {
+    margin-right: 10px; /* Add margin to separate input from the button */
+}
+
+#weather-info-box {
+    display: flex;
+    justify-content: center;
+    background-color: #2D66CA;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#weather-container {
+    background-color: #0056b3;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.weather-box {
+    margin-top: 60px;
+    width: 100%;
+}
+#forecast-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.forecast-day {
+    text-align: center;
+    margin: 10px;
+}
