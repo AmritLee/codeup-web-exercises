@@ -18,9 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formattedDateTime = now.toLocaleDateString('en-US', options) + ' ' + now.toLocaleTimeString();
         currentDateTimeElement.textContent = `${formattedDateTime}`;
     }
-    // Initial setup
     setCurrentDateTime();
-    // Update date and time every minute
     setInterval(setCurrentDateTime, 60000);
 });
 
@@ -70,7 +68,7 @@ function getFiveDayForecast(latitude, longitude) {
             const forecastContainer = document.getElementById('forecast-container');
             forecastContainer.innerHTML = ''; // Clear previous content
             const forecastData = {};
-            // Extract highest and lowest temperatures for each day
+            // Highest and lowest temperatures for each day
             fiveDayForecast.list.forEach(forecast => {
                 const forecastDate = new Date(forecast.dt * 1000);
                 const dayKey = forecastDate.toLocaleDateString('en-US');
@@ -89,7 +87,7 @@ function getFiveDayForecast(latitude, longitude) {
                     forecastData[dayKey].lowTemp = temperature;
                 }
             });
-            // Display the highest and lowest temperatures for each day
+            // Display the highest and lowest temperatures
             Object.values(forecastData).forEach(data => {
                 const day = new Date(data.date).toLocaleDateString('en-US', {weekday: 'short'});
                 const forecastDayElement = document.createElement('div');
@@ -109,7 +107,6 @@ function getFiveDayForecast(latitude, longitude) {
 function searchLocation() {
     const locationInput = document.getElementById('location-input').value;
     if (locationInput.trim() !== '') {
-        // Use Mapbox Geocoding API to get coordinates and location name for the entered location
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(locationInput)}.json?access_token=${MB_key}`)
             .then(response => response.json())
             .then(data => {
@@ -176,12 +173,9 @@ let marker; // Variable to hold the map marker
 
 // Function to update the map marker
 function updateMapMarker(lng, lat) {
-    // Remove existing marker if present
     if (marker) {
         marker.remove();
     }
-
-    // Add a new marker at the specified coordinates
     marker = new mapboxgl.Marker()
         .setLngLat([lng, lat])
         .addTo(map);
@@ -224,27 +218,20 @@ function initializeMapMarker() {
     marker = new mapboxgl.Marker()
         .setLngLat(defaultLngLat)
         .addTo(map);
-
-    // Initial weather and forecast for the default location
     getWeather(defaultLngLat[1], defaultLngLat[0]);
     updateForecast(defaultLngLat[1], defaultLngLat[0]);
-}// Initialize the map marker
+}
 initializeMapMarker();
 
 // Function to update weather and map based on coordinates
 function updateWeatherAndMap(latitude, longitude, locationName) {
-    // Update the content of the navigation bar
     document.getElementById('currentCity').textContent = locationName;
-    // Update the map center
     map.flyTo({
         center: [longitude, latitude],
         zoom: 12,
     });
-    // Update the weather for the new location
     getWeather(latitude, longitude);
-    // Update the 5-day forecast for the new location
     updateForecast(latitude, longitude);
-    // Update the map marker
     updateMapMarker(longitude, latitude);
 }
 
@@ -269,6 +256,7 @@ document.getElementById('location-input').addEventListener('keydown', (event) =>
         disableMarkerDragging();
     }
 });
+
 updateWeatherAndMap(38.5891, -121.3027, 'Rancho Cordova');
 getCurrentWeather();
 getFiveDayForecast();
