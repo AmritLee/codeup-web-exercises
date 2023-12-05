@@ -10,11 +10,11 @@ const map = new mapboxgl.Map({
 const lat = 38.5891;
 const lon = -121.3027;
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const currentDateTimeElement = document.getElementById('current-time');
     function setCurrentDateTime() {
         const now = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
         const formattedDateTime = now.toLocaleDateString('en-US', options) + ' ' + now.toLocaleTimeString();
         currentDateTimeElement.textContent = `${formattedDateTime}`;
     }
@@ -157,7 +157,7 @@ function updateForecast(latitude, longitude) {
             });
             // Display the highest and lowest temperatures for each day
             Object.values(forecastData).forEach(data => {
-                const day = new Date(data.date).toLocaleDateString('en-US', { weekday: 'short' });
+                const day = new Date(data.date).toLocaleDateString('en-US', {weekday: 'short'});
                 const forecastDayElement = document.createElement('div');
                 forecastDayElement.classList.add('forecast-day');
                 forecastDayElement.innerHTML = `
@@ -170,6 +170,66 @@ function updateForecast(latitude, longitude) {
         })
         .catch(error => console.error('Error fetching 5-day forecast:', error));
 }
+
+
+let marker; // Variable to hold the map marker
+
+// Function to update the map marker
+function updateMapMarker(lng, lat) {
+    // Remove existing marker if present
+    if (marker) {
+        marker.remove();
+    }
+
+    // Add a new marker at the specified coordinates
+    marker = new mapboxgl.Marker()
+        .setLngLat([lng, lat])
+        .addTo(map);
+}
+
+// Function to handle map click event
+function handleMapClick(event) {
+    const {lng, lat} = event.lngLat;
+    updateMapMarker(lng, lat);
+    getWeather(lat, lng);
+    updateForecast(lat, lng);
+}
+
+map.on('click', handleMapClick);
+
+// Function to handle marker drag end event
+function handleMarkerDragEnd() {
+    const lngLat = marker.getLngLat();
+    getWeather(lngLat.lat, lngLat.lng);
+    updateForecast(lngLat.lat, lngLat.lng);
+}
+
+// Function to enable marker dragging
+function enableMarkerDragging() {
+    marker.setDraggable(true);
+    marker.on('dragend', handleMarkerDragEnd);
+}
+
+// Function to disable marker dragging
+function disableMarkerDragging() {
+    if (marker) {
+        marker.setDraggable(false);
+        marker.off('dragend', handleMarkerDragEnd);
+    }
+}
+
+// Function to initialize map marker
+function initializeMapMarker() {
+    const defaultLngLat = [-121.3027, 38.5891];
+    marker = new mapboxgl.Marker()
+        .setLngLat(defaultLngLat)
+        .addTo(map);
+
+    // Initial weather and forecast for the default location
+    getWeather(defaultLngLat[1], defaultLngLat[0]);
+    updateForecast(defaultLngLat[1], defaultLngLat[0]);
+}// Initialize the map marker
+initializeMapMarker();
 
 // Function to update weather and map based on coordinates
 function updateWeatherAndMap(latitude, longitude, locationName) {
@@ -184,8 +244,31 @@ function updateWeatherAndMap(latitude, longitude, locationName) {
     getWeather(latitude, longitude);
     // Update the 5-day forecast for the new location
     updateForecast(latitude, longitude);
+    // Update the map marker
+    updateMapMarker(longitude, latitude);
 }
 
+// Enable marker dragging when the map is clicked
+map.on('click', () => {
+    enableMarkerDragging();
+});
+
+// Disable marker dragging when the search is performed
+document.getElementById('location-input').addEventListener('input', () => {
+    disableMarkerDragging();
+});
+
+// Disable marker dragging when the search button is clicked
+document.getElementById('search-container').querySelector('button').addEventListener('click', () => {
+    disableMarkerDragging();
+});
+
+// Disable marker dragging when Enter key is pressed in the search input
+document.getElementById('location-input').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        disableMarkerDragging();
+    }
+});
 updateWeatherAndMap(38.5891, -121.3027, 'Rancho Cordova');
 getCurrentWeather();
 getFiveDayForecast();
